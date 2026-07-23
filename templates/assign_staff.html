@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Trek | TrekSphere</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+
+   <style>
+
+    
+
+h1{
+    text-align: center;
+    color: white;
+    margin: 30px 0;
+    font-size: 32px;
+}
+
+table{
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+table th{
+    background: #0f766e;
+    color: white;
+    padding: 15px;
+    font-size: 17px;
+    text-align: center;
+}
+
+table td{
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+table tr:nth-child(even){
+    background: #f8f8f8;
+}
+
+table tr:hover{
+    background: #dff7f3;
+    transition: 0.3s;
+}
+
+button{
+    background: #14b86a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: #0d8c50;
+    transform: scale(1.05);
+}
+
+button:active{
+    transform: scale(0.98);
+}
+   </style>
+
+    
+</head>
+
+<body>
+
+<nav>
+    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    
+    <a href="{{ url_for('admin') }}">Dashboard</a>
+    <a href="{{ url_for('add_trek')}}">Add Trek</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+{% include "flash.html" %}
+
+<h1>Assign Trek to the Staff</h1>
+
+<div>
+   <table border="1">
+
+    <tr>
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Gmail</th>
+        <th>Approved</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for staff in staffs %}
+
+    <tr>
+
+        <td>{{ staff.u_name }}</td>
+        <td>{{ staff.mobile_number }}</td>
+        <td>{{ staff.gmail }}</td>
+        <td>{{ staff.is_approved }}</td>
+        <td>{{ staff.assignment_status }}</td>
+
+        <td>
+            <form
+                action="{{ url_for('save_assign_staff',
+                                   trek_id=trek.trek_id,
+                                   staff_id=staff.u_id) }}"
+                method="POST">
+
+                <button type="submit">
+                    Assign
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+</div>
+
+
+
+</body>
+</html>

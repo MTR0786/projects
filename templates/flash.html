@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* ================= FLASH MESSAGES ================= */
+
+#flash-container{
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    z-index: 9999;
+}
+
+.alert{
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 6px 15px rgba(0,0,0,.2);
+    animation: slideIn .4s ease;
+}
+
+/* Success */
+
+.alert-success{
+    background: #d4edda;
+    color: #155724;
+    border-left: 6px solid #28a745;
+}
+
+/* Error */
+
+.alert-danger{
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 6px solid #dc3545;
+}
+
+/* Animation */
+
+@keyframes slideIn{
+
+    from{
+        opacity:0;
+        transform:translateX(100%);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+</style>
+<body>
+    <div id="flash-container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</div>
+</body>
+</html>

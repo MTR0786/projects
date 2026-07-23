@@ -1,0 +1,183 @@
+/* ==========================
+        Global Styles
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+    background:#2ea877;
+    min-height:100vh;
+    
+}
+/* 
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#92e8b4;
+    color:#333;
+} */
+
+/* ==========================
+        Navigation Bar
+========================== */
+
+nav{
+
+    height:70px;
+
+    background:rgba(15,118,110,.95);
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 40px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+/* Logo */
+
+#logo{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+/* Push menu to right */
+
+nav a:first-of-type{
+
+    margin-left:40px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+/* Hover */
+
+nav a:hover{
+
+    background:white;
+
+    color:#0f766e;
+
+}
+
+/* Active Page */
+
+nav a.active{
+
+    background:white;
+
+    color:#0f766e;
+
+}
+
+/* Logout Button */
+
+nav a:last-child{
+
+    margin-left:auto;
+
+    background:#dc3545;
+
+}
+
+nav a:last-child:hover{
+
+    background:#bb2d3b;
+
+    color:white;
+
+}
+
+/* ==========================
+        Common Container
+========================== */
+
+.container{
+
+    width:95%;
+
+    margin:30px auto;
+
+}
+
+/* ==========================
+        Cards
+========================== */
+
+.card{
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+
+}
+
+/* ==========================
+        Responsive
+========================== */
+
+@media(max-width:768px){
+
+nav{
+
+    padding:0 15px;
+
+}
+
+nav a{
+
+    font-size:14px;
+
+    padding:8px 10px;
+
+}
+
+#logo{
+
+    width:40px;
+
+    height:40px;
+
+}
+
+}

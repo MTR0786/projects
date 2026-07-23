@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Trekking APP </title>
+  <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* NAVBAR */
+    
+    nav {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.1);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: yellow;
+    }
+
+     #logo{
+      width: 45px;
+      height: 45px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: white;
+      color: #0f766e;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: yellow;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: -50px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      color: black;
+      padding: 20px;
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px rgba(0,0,0,.2);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+ <nav>
+    <div class="nav-links">
+        <img id="logo" src="../static/logo.png" alt="Logo">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="#">About</a>
+    </div>
+</nav>
+{% include "flash.html" %}
+  
+  <div class="hero">
+    <h1>Welcome to Trekking App</h1>
+    <p>
+      Welcome to TrekSphere, where every trail leads to a new adventure. Discover breathtaking trekking destinations, book your next journey, and create unforgettable memories with ease.
+    </p>
+
+    <a class="btn" href="/register">Get Started</a>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card">
+      <h3>🥾 Trekker's</h3>
+      <p> TDiscover, book, and track your trekking adventures with ease.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧭 Trekk Staff</h3>
+      <p>Manage assigned treks and guide every adventure safely.s.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Administrator</h3>
+      <p>Manage treks, staff, users, and bookings from one dashboard.</p>
+    </div>
+  </div>
+
+</body>
+</html>

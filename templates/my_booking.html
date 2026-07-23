@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings | TrekSphere</title>
+
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='logo.png') }}"
+          type="image/x-icon">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='common.css') }}">
+
+    
+</head>
+
+<style>
+    body{
+    background:#eef7f5;
+}
+
+h1{
+    text-align:center;
+    color:#0f766e;
+    margin:30px 0;
+}
+
+.booking-container{
+    width:90%;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:25px;
+
+    padding-bottom:40px;
+}
+
+.booking-card{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:22px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+
+    transition:.3s;
+}
+
+.booking-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.booking-card h2{
+
+    color:#0f766e;
+
+    margin-bottom:15px;
+
+}
+
+.booking-card p{
+
+    margin:10px 0;
+
+    color:#444;
+
+}
+
+.status{
+
+    color:green;
+
+    font-weight:bold;
+
+}
+
+.cancel-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#d32f2f;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+.cancel-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+.empty{
+
+    width:450px;
+
+    margin:80px auto;
+
+    background:white;
+
+    padding:35px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.browse-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:#0f766e;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+}
+
+.browse-btn:hover{
+
+    background:#0b5d56;
+
+}
+</style>
+
+<body>
+
+<nav>
+    <img id="logo"
+         src="{{ url_for('static', filename='logo.png') }}"
+         alt="Logo">
+
+    <a href="{{ url_for('trekker') }}">Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+{% include "flash.html" %}
+
+<h1>My Bookings</h1>
+
+{% if booking_data %}
+
+<div class="booking-container">
+
+{% for booking in booking_data %}
+
+<div class="booking-card">
+
+    <h2>{{ booking.trek.trek_name }}</h2>
+
+    <p><strong>📍 Location:</strong> {{ booking.trek.location }}</p>
+
+    <p><strong>🏔 Difficulty:</strong> {{ booking.trek.difficulty }}</p>
+
+    <p><strong>⏳ Duration:</strong> {{ booking.trek.duration }} Days</p>
+
+    <p><strong>📅 Trek Date:</strong>
+        {{ booking.trek.start_date }}
+        -
+        {{ booking.trek.end_date }}
+    </p>
+
+    <p><strong>📖 Booking Date:</strong>
+        {{ booking.booking.booking_date }}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+
+        <span class="status">
+            {{ booking.booking.status }}
+        </span>
+    </p>
+
+    <form action="{{ url_for('cancel_booking',
+                         booking_id=booking.booking.booking_id) }}"
+      method="POST">
+
+    <button type="submit" class="cancel-btn">
+        Cancel Booking
+    </button>
+</form>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty">
+
+    <h2>No Active Bookings</h2>
+
+    <p>You haven't booked any trek yet.</p>
+
+    <a href="{{ url_for('trekker') }}" class="browse-btn">
+
+        Browse Treks
+
+    </a>
+
+</div>
+
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard | TrekSphere</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='staff.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+
+    <a href="#">Dashboard</a>
+    <a href="#">My Trek</a>
+    <a href="#">Participants</a>
+    <a href="#">Profile</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+<h1>Welcome, Trek Staff</h1>
+
+<div class="dashboard-cards">
+
+    <div class="card">
+        <h2>{{trek_number}}</h2>
+        <p>Assigned Trek</p>
+    </div>
+
+    <div class="card">
+        <h2>{{no_of_participants}}</h2>
+        <p>Participants</p>
+    </div>
+
+    <div class="card">
+        <h2>{{trek_status}}</h2>
+        <p>Trek Status</p>
+    </div>
+
+    <div class="card">
+        <h2>{{slots}}</h2>
+        <p>Available Slots</p>
+    </div>
+
+</div>
+
+    {% if trek %}
+
+        <div class="trek-details">
+
+            <div class="trek-header">
+                <h2>🥾 {{ trek.trek_name }}</h2>
+                <p>Your Currently Assigned Trek</p>
+            </div>
+
+            <div class="trek-grid">
+
+                <div class="info-box">
+                    <div class="info-title">📍 Location</div>
+                    <div class="info-value">{{ trek.location }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">🏔 Difficulty</div>
+                    <div class="info-value">{{ trek.difficulty }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">📅 Duration</div>
+                    <div class="info-value">{{ trek.duration }} Days</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">🎫 Available Slots</div>
+                    <div class="info-value">{{ trek.available_slots }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">🚩 Status</div>
+                    <div class="info-value">{{ trek.status }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">👨‍💼 Staff ID</div>
+                    <div class="info-value">{{ trek.assigned_staff_id }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">📆 Start Date</div>
+                    <div class="info-value">{{ trek.start_date }}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">🏁 End Date</div>
+                    <div class="info-value">{{ trek.end_date }}</div>
+                </div>
+
+            </div>
+
+            <div class="description">
+                <h3>📖 Trek Description</h3>
+                <p>{{ trek.description }}</p>
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="no-trek">
+
+            <h2>🏕 No Trek Assigned</h2>
+
+            <p>
+                Admin has not assigned any trek to you yet.
+                Please wait for approval.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+<h2 class="section-title">Quick Actions</h2>
+
+<div class="action-container">
+
+    <a href="#" class="action-card">
+        <div class="icon">🥾</div>
+        <h3>My Trek</h3>
+        <p>View details of your assigned trek.</p>
+    </a>
+
+    {% if trek %}
+            <a href="{{ url_for('staff_edit_trek', trek_id=trek.trek_id) }}"
+            class="action-card">
+                <div class="icon">✏️</div>
+                <h3>Update Trek</h3>
+                <p>Edit your assigned trek.</p>
+            </a>
+    {% else %}
+            <div class="action-card disabled-card">
+                <div class="icon">✏️</div>
+                <h3>Update Trek</h3>
+                <p>No trek assigned yet.</p>
+            </div>
+    {% endif %}
+
+    <a href="/manage_booking" class="action-card">
+        <div class="icon">👥</div>
+        <h3>Participants</h3>
+        <p>View trekkers registered for your trek.</p>
+    </a>
+
+    <a href="#" class="action-card">
+        <div class="icon">👤</div>
+        <h3>Profile</h3>
+        <p>Update your profile information.</p>
+    </a>
+
+</div>
+
+</body>
+</html>

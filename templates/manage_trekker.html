@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manage Trekkers| TrekSphere</title>
+
+<link rel="shortcut icon"
+href="{{ url_for('static', filename='logo.png') }}"
+type="image/x-icon">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='common.css') }}">
+
+<style>
+
+body{
+    background:#f3f7f9;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Heading */
+
+.page-title{
+    text-align:center;
+    color:#0f766e;
+    margin:30px 0 15px;
+    font-size:34px;
+}
+
+/* Search */
+
+.search-box{
+    width:95%;
+    margin:0 auto 20px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.search-box input{
+
+    width:300px;
+    padding:10px 15px;
+
+    border:1px solid #ccc;
+    border-radius:6px;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+.search-box button{
+    margin-left:10px;
+    padding:10px 20px;
+    background:#0f766e;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#0b5d56;
+}
+
+/* Table */
+
+.table-container{
+    width:95%;
+    margin:auto;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+thead{
+    background:#0f766e;
+    color:white;
+}
+thead th{
+    padding:16px;
+    font-size:15px;
+    text-align:left;
+}
+tbody td{
+    padding:14px 16px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+tbody tr:nth-child(even){
+    background:#f8f9fb;
+}
+tbody tr:hover{
+    background:#e8f7f5;
+}
+/* Status */
+.active{
+    color:#198754;
+    font-weight:bold;
+}
+.blacklisted{
+    color:#dc3545;
+    font-weight:bold;
+}
+
+/* Role */
+.role{
+    padding:5px 10px;
+    border-radius:15px;
+    color:white;
+    font-size:13px;
+}
+.admin{
+    background:#dc3545;
+}
+.staff{
+    background:#fd7e14;
+}
+.trekker{
+    background:#198754;
+}
+/* Blacklist Button */
+
+.blacklist-btn{
+
+    display:inline-block;
+
+    background:#dc3545;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:8px 14px;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.blacklist-btn:hover{
+
+    background:#b02a37;
+
+}
+
+/* Activate Button */
+.activate-btn{
+    display:inline-block;
+    background:#198754;
+    color:white;
+    text-decoration:none;
+    padding:8px 18px;
+    border-radius:6px;
+    font-size:14px;
+    transition:.3s;
+}
+.activate-btn:hover{
+    background:#146c43;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.table-container{
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    min-width:950px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<img id="logo"
+src="{{ url_for('static', filename='logo.png') }}">
+
+<a href="{{ url_for('admin') }}">Dashboard</a>
+
+<a href="{{ url_for('add_trek') }}">Add Trek</a>
+
+<a href="{{ url_for('logout') }}">Logout</a>
+
+</nav>
+
+{% include "flash.html" %}
+
+<h1 class="page-title">Manage Trekkers</h1>
+
+<div class="search-box">
+
+<form method="GET">
+     <input type="text" name="search" placeholder="Search by Name or ID">
+    <button type="submit"> Search </button>
+</form>
+
+</div>
+
+<div class="table-container">
+
+<table>
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+
+{% for user in users %}
+
+    <tr>
+        <td>{{ user.u_id }}</td>
+        <td>{{ user.u_name }}</td>
+        <td><span class="role {{ user.role }}">{{ user.role }}<span></td>
+        <td>{{ user.gmail }}</td>
+        <td>{{ user.mobile_number }}</td>
+       
+
+       
+
+    <td>
+        {% if user.is_blacklisted %}
+
+        <span class="blacklisted"></span>Blacklisted</span>
+
+        {% else %}
+
+        <span class="active">Active</span>
+
+        {% endif %}
+    </td>
+
+    <td>
+    {% if user.is_blacklisted %}
+
+        <a href="{{ url_for('activate_user', u_id=user.u_id) }}"
+        class="activate-btn">
+
+        Activate
+
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('blacklist_user', u_id=user.u_id) }}"
+        class="blacklist-btn">Blacklist </a>
+
+    {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

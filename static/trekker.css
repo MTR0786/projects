@@ -1,0 +1,310 @@
+/* ================= HERO ================= */
+
+.hero{
+
+    width:90%;
+    margin:30px auto;
+
+    background:linear-gradient(135deg,#009688,#00bfa5);
+
+    color:white;
+
+    text-align:center;
+
+    padding:50px;
+
+    border-radius:20px;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-cards{
+
+    width:90%;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h2{
+
+    font-size:35px;
+
+    color:#009688;
+
+}
+
+.card p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+
+/* ================= SEARCH ================= */
+
+.search-box{
+
+    width:90%;
+
+    margin:40px auto;
+
+}
+
+.search-box form{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.search-box input,
+.search-box select{
+
+    flex:1;
+
+    min-width:180px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
+}
+
+.search-box button{
+
+    padding:12px 30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#009688;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+.search-box button:hover{
+
+    background:#00796b;
+
+}
+
+
+/* ================= TREKS ================= */
+
+.section-title{
+
+    text-align:center;
+
+    color:white;
+
+    margin:40px;
+
+}
+
+.trek-container{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:25px;
+
+    padding-bottom:40px;
+
+}
+
+.trek-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.trek-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.trek-card h2{
+
+    color:#009688;
+
+    margin-bottom:15px;
+
+}
+
+.trek-card p{
+
+    margin:10px 0;
+
+    color:#555;
+
+}
+
+.status{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    background:#28a745;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+.buttons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+.buttons a{
+
+    text-decoration:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    color:white;
+
+    background:#009688;
+
+}
+
+.buttons a:last-child{
+
+    background:#ff9800;
+
+}
+
+.buttons a:hover{
+
+    opacity:.9;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+}
+
+
+.no-result{
+    width: 60%;
+    margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+.no-result h2{
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.no-result p{
+    color: #666;
+    font-size: 16px;
+}

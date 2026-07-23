@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Trekking APP </title>
+  <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+  <style>
+
+    body{
+      background-color: rgb(16, 173, 173);
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    nav{
+      background-color: rgb(112, 234, 234);
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-left: 15px;
+      border-radius: 5px;
+    }
+
+    nav a{
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      
+    }
+    nav a:hover{
+        color: rgb(225, 57, 57);
+    }
+
+    .center-wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 30px);
+    }
+    #logo{
+      width: 45px;
+      height: 45px;
+    }
+
+    #registration{
+      width: 50%;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    label{
+      margin-top: 10px;
+    }
+
+    input{
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button{
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(16, 173, 173);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover{
+      opacity: 0.9;
+    }
+    #role{
+      margin: 10px;
+      padding:5px;
+      color: rgb(100, 202, 53);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <img id="logo" src="../static/logo.png" alt="">
+    <a href="/">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+
+    
+  </nav>
+ <h1 style="text-align: center;">Every Trek Begins with One Step.</h1>
+  <div class="center-wrapper">
+   
+<div id="registration">
+  <h2>Sign Up Form</h2>
+
+  <form id="signupForm" method="POST">
+
+    <label>Full Name</label>
+    <input type="text" name="username" placeholder="Enter your full name" required>
+
+    <label>Mobile Number</label>
+    <input type="tel" id="mobile_no" name="mobile_number" placeholder="Enter mobile number" pattern="[0-9]{10}" required> 
+
+    <label>Email ID</label>
+    <input type="email" name="gmail" placeholder="Enter email address" required>
+
+    <!-- <label>Date of Birth</label>
+    <input type="date" id="date_of_birth" required> -->
+
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Create password" required>
+
+    <!-- <label>Confirm Password</label>
+    <input type="password" id="confirm_password"  placeholder="Confirm password"  oncopy="return false" onpaste="return false" required> -->
+
+    <label>Role</label>
+    <select name="role" id ='role'>
+      <option>select </option>
+      <option value="trekker">Trekker</option>
+      <option value="staff">Staff</option>
+    </select>
+
+    <button type="submit" value="signup">Sign Up</button>
+
+    <p style="margin-top:10px;">
+      Already registered?
+      <a href="login">Login</a>
+    </p>
+
+  </form>
+</div>
+
+    </div>
+  </div>
+
+</body>
+</html>

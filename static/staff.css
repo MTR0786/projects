@@ -1,0 +1,204 @@
+/* ================= STAFF DASHBOARD ================= */
+
+h1{
+    text-align:center;
+    color:white;
+    margin:30px 0;
+    font-size:35px;
+}
+
+.dashboard-cards{
+    width:90%;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h2{
+    color:#0f766e;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#555;
+    font-size:18px;
+}
+
+.section-title{
+    text-align:center;
+    color:white;
+    margin:40px 0 20px;
+}
+
+.action-container{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    padding-bottom:40px;
+}
+
+.action-card{
+    text-decoration:none;
+    color:#333;
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.action-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.2);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.action-card h3{
+    color:#0f766e;
+    margin-bottom:10px;
+}
+
+.action-card p{
+    color:#666;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* ================= ASSIGNED TREK DETAILS ================= */
+/* ================= ASSIGNED TREK ================= */
+
+.trek-details{
+    width:90%;
+    max-width:1100px;
+    margin:35px auto;
+    background:#ffffff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
+
+.trek-header{
+    background:linear-gradient(135deg,#009688,#00bfa5);
+    color:white;
+    padding:25px;
+}
+
+.trek-header h2{
+    margin:0;
+    font-size:32px;
+}
+
+.trek-header p{
+    margin-top:8px;
+    font-size:16px;
+    opacity:.9;
+}
+
+/* Information Grid */
+
+.trek-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    padding:30px;
+}
+
+.info-box{
+    background:#f7f9fc;
+    border-radius:12px;
+    padding:18px 22px;
+    transition:.3s;
+    border-left:5px solid #009688;
+}
+
+.info-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.info-title{
+    color:#777;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.info-value{
+    margin-top:8px;
+    font-size:22px;
+    color:#222;
+    font-weight:bold;
+}
+
+/* Description */
+
+.description{
+    margin:0 30px 30px;
+    background:#eef7f6;
+    padding:20px;
+    border-radius:12px;
+}
+
+.description h3{
+    color:#009688;
+    margin-bottom:10px;
+}
+
+.description p{
+    color:#444;
+    line-height:1.8;
+}
+
+/* No Trek */
+
+.no-trek{
+    width:70%;
+    margin:40px auto;
+    background:white;
+    padding:35px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.no-trek h2{
+    color:#e74c3c;
+    margin-bottom:10px;
+}
+
+.no-trek p{
+    color:#666;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.trek-grid{
+    grid-template-columns:1fr;
+}
+
+}

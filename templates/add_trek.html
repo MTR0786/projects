@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Trek | TrekSphere</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+    
+    
+    <style>
+        h1{
+            text-align:center;
+            color:white;
+            margin-top:30px;
+        }
+
+        #add_trek{
+            width:500px;
+            margin:30px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,.3);
+        }
+
+        #add_trek h2{
+            text-align:center;
+            color:#0f766e;
+            margin-bottom:20px;
+        }
+
+        #add_trek_Form{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            margin-top:12px;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
+
+        input,
+        select,
+        textarea{
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:15px;
+        }
+
+        textarea{
+            resize:none;
+        }
+
+        button{
+            margin-top:20px;
+            padding:12px;
+            border:none;
+            background:#0f766e;
+            color:white;
+            font-size:16px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0b5d56;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    <a href="{{ url_for('admin') }}">Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+{% include "flash.html" %}
+
+<h1>Add New Trek</h1>
+
+<div id="add_trek">
+
+    <h2>Create Trek</h2>
+
+    <form id="add_trek_Form" method="POST">
+
+        <label>Trek Name</label>
+        <input type="text" name="trek_name" placeholder="Enter Trek Name" required >
+
+        <label>Location</label>
+        <input type="text"  name="location" placeholder="Enter Location" required>
+
+        <label>Difficulty</label>
+        <select name="difficulty" required>
+
+            <option value="">Select Difficulty</option>
+
+            <option value="Easy">Easy</option>
+
+            <option value="Moderate">Moderate</option>
+
+            <option value="Hard">Hard</option>
+
+        </select>
+
+        <label>Duration (Days)</label>
+        <input
+            type="text"
+            name="duration"
+            min="1"
+            required
+        >
+
+        <label>Available Slots</label>
+        <input
+            type="number"
+            name="available_slots"
+            min="1"
+            required
+        >
+
+        <label>Start Date</label>
+        <input
+            type="date"
+            name="start_date"
+            required
+        >
+
+        <label>End Date</label>
+        <input
+            type="date"
+            name="end_date"
+            required
+        >
+
+        <label>Status</label>
+
+        <select name="status">
+
+            <option value="Open">Open</option>
+
+            <option value="Closed">Closed</option>
+
+            <option value="Completed">Completed</option>
+
+        </select>
+
+        <label>Description</label>
+
+        <textarea
+            name="description"
+            rows="4"
+            placeholder="Write trek description..."
+        ></textarea>
+
+        <button type="submit" value="add_trek" >
+            Add Trek
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

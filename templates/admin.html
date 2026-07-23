@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Trekking APP </title>
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+
+
+<body>
+    <nav>
+    <img id="logo" src="../static/logo.png" alt="">
+    <a href="/manage_staff" >Staffs</a>
+    <a href="/manage_trekker">Trekkers</a>
+    <a href="/manage_treks">Treks</a>
+    <a href="/manage_booking">Bookings</a>
+    <a href="logout">Logout</a>
+  </nav>
+
+    {% include "flash.html" %}
+
+  <div class="dashboard-cards">
+
+    <div class="card">
+        <h2>{{ total_staff }}</h2>
+        <p>Total Staff</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_trekkers }}</h2>
+        <p>Total Trekkers</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_treks }}</h2>
+        <p>Total Open Treks</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_bookings }}</h2>
+        <p>Total Bookings</p>
+    </div>
+
+</div>
+        
+        <h2 class="section-title">Pending Staff Approval</h2>
+<table>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Mobile</th>
+<th>Action</th>
+</tr>
+
+{% for staff in pending_staff %}
+
+<tr>
+
+<td>{{ staff.u_name }}</td>
+
+<td>{{ staff.gmail }}</td>
+
+<td>{{ staff.mobile_number }}</td>
+
+<td>
+
+<a href="/approve_staff/{{ staff.u_id }}">
+Approve
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h2 class="section-title">Admin Control Panel</h2>
+
+<div class="admin-actions">
+
+    <a href="/add_trek" class="action-card">
+        <div class="icon">➕</div>
+        <h3>Add Trek</h3>
+        <p>Create and publish a new trekking event.</p>
+    </a>
+
+    <a href="/manage_treks" class="action-card">
+        <div class="icon">🥾</div>
+        <h3>Manage Treks</h3>
+        <p>Edit, delete, and assign staff to treks.</p>
+    </a>
+
+    <a href="/manage_staff" class="action-card">
+        <div class="icon">👥</div>
+        <h3>Manage Staff</h3>
+        <p>Approve, blacklist, and manage trek staff.</p>
+    </a>
+
+    <a href="/manage_trekker" class="action-card">
+        <div class="icon">👤</div>
+        <h3>Manage Trekker</h3>
+        <p>View all trekkers and manage their accounts.</p>
+    </a>
+
+    <a href="/manage_booking" class="action-card">
+        <div class="icon">📖</div>
+        <h3>View Bookings</h3>
+        <p>Track all trek bookings and booking history.</p>
+    </a>
+
+</div>
+</div>
+</body>
+</html>
