@@ -107,7 +107,7 @@ class Booking(db.Model):
 
     status = db.Column(db.String(20), default="Booked")
 
-    number_of_people = db.Column( db.Integer, default=1 , nullable=False )
+    # number_of_people = db.Column( db.Integer, default=1 , nullable=False )
 
 
 
@@ -127,10 +127,10 @@ def register():
         password = request.form['password']
         role = request.form['role']
 
-        # 🚫 Prevent admin registration
-        if role == "admin":
-            flash("Admin registration is not allowed.", "error")
-            return redirect('/register')
+        # #  Prevent admin registration
+        # if role == "admin":
+        #     flash("Admin registration is not allowed.", "error")
+        #     return redirect('/register')
 
         # Check existing gmail
         existing_user = User.query.filter_by(
