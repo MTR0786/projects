@@ -1,10 +1,11 @@
-from flask import Flask, render_template , redirect,request ,flash ,url_for 
+import os
+
+from flask import Flask, render_template, redirect, request, flash, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-from flask import session
-from datetime import datetime ,date
+from datetime import datetime, date
 
 app = Flask(__name__)
-app.secret_key = "secret_key"
+app.secret_key = os.environ.get("SECRET_KEY")
 
 # DATABASE CONFIG
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Trekking.db'
